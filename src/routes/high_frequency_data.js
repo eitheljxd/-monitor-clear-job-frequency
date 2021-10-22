@@ -25,7 +25,7 @@ routes.get("/", async (req, res) => {
 async function getFrenquencies(date) {
   const sequelize = Sequelize;
   return await frequency.findAll({
-    limit: 100000,
+    limit: 50000,
 
     where: sequelize.where(
       sequelize.fn("DATE", sequelize.col("create_date")),
