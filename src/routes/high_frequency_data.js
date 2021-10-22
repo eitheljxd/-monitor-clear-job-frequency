@@ -15,7 +15,7 @@ routes.get("/", async (req, res) => {
     `Se borrará ${result.length} registro(s) creado(s) antes de la fecha ${date}`
   );
   const ids = await getIds(result);
-  // await deleteMqqt(ids);
+  await deleteFrequencies(ids);
   res.json({
     success: true,
     rows_affected: result.length,
@@ -40,17 +40,17 @@ async function getFrenquencies(date) {
     // },
   });
 }
-async function deleteMqqt(ids) {
-  return await Mqqt.destroy({
+async function deleteFrequencies(ids) {
+  return await frequency.destroy({
     where: {
-      row_topic: ids,
+      row_high_frequency_data: ids,
     },
   });
 }
 async function getIds(topics) {
   let ids = [];
   topics.forEach((element) => {
-    ids.push(element.dataValues.row_topic);
+    ids.push(element.dataValues.row_high_frequency_data);
   });
   return ids;
 }

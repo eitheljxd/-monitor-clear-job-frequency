@@ -1,4 +1,4 @@
-service: job-clear-mqqt
+service: job-clear-frequency
 frameworkVersion: "2"
 
 provider:
@@ -6,7 +6,7 @@ provider:
   runtime: nodejs12.x
 
 functions:
-  job-clear-mqqt:
+  job-clear-frequency:
     handler: handler.handler
     events:
       - http:
